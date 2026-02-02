@@ -152,6 +152,11 @@ const DemoPlayer = {
     this.updateProgress(100);
     this.addStep('Final', 'Form filled successfully (not submitted)');
 
+    // Hide iframe (TinyFish completion screen with fish)
+    if (this.elements.demoFrame) {
+      this.elements.demoFrame.style.display = 'none';
+    }
+
     // Show event CTA
     if (this.elements.demoPlaceholder) {
       this.elements.demoPlaceholder.innerHTML = `
