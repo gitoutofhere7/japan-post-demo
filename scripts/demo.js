@@ -164,8 +164,20 @@ const DemoPlayer = {
     this.updateProgress(100);
     this.addStep('Final', 'Form filled successfully (not submitted)');
 
+    // Show success message
+    if (this.elements.demoPlaceholder) {
+      this.elements.demoPlaceholder.innerHTML = `
+        <div style="padding: 48px; text-align: center;">
+          <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
+          <h3 style="color: var(--color-lagoon); margin-bottom: 8px;">Demo Complete!</h3>
+          <p style="color: var(--color-text);">Form filled successfully (not submitted)</p>
+        </div>
+      `;
+      this.elements.demoPlaceholder.style.display = 'block';
+    }
+
     setTimeout(() => {
-      this.updateStatus('Ready to run again');
+      this.updateStatus('Refresh to run again');
     }, 3000);
   },
 

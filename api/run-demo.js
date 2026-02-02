@@ -18,15 +18,14 @@ const DEMO_NAMES = [
 ];
 
 // Generate dummy tracking number (Japan Post format)
-// Japan Post accepts either:
-// - 6-digit notice number (お問い合わせ番号)
-// - 11-13 alphanumeric tracking number
+// Japan Post Yu-Pack tracking numbers are typically 11 digits
+// Format: 12345678901 (11 consecutive digits)
+// Starting with 1-9 to avoid leading zeros
 function generateTrackingNumber() {
-  // Use 12-digit format (common for domestic parcels)
-  // Format: 1234-5678-9012 (without hyphens for input)
-  const part1 = Math.floor(Math.random() * 9000) + 1000; // 4 digits
-  const part2 = Math.floor(Math.random() * 90000000) + 10000000; // 8 digits
-  return `${part1}${part2}`; // 12 digits total
+  // Generate 11-digit number starting with 1-9
+  const firstDigit = Math.floor(Math.random() * 9) + 1; // 1-9
+  const remaining = Math.floor(Math.random() * 10000000000).toString().padStart(10, '0'); // 10 digits
+  return `${firstDigit}${remaining}`;
 }
 
 // Generate future date (3-7 days from now)
