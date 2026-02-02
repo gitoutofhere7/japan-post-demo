@@ -179,6 +179,9 @@ Note: This is a demonstration with dummy data. All information is randomly gener
             try {
               const event = JSON.parse(line.slice(6));
 
+              // Log all TinyFish events for debugging
+              console.log('TinyFish event:', event.type, event);
+
               // Forward relevant events to client
               if (event.type === 'BROWSER_URL') {
                 await sendEvent({
