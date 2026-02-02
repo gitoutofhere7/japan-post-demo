@@ -121,13 +121,25 @@ const DemoPlayer = {
   },
 
   loadBrowser(url) {
-    // Hide placeholder, show iframe
+    // Show streaming URL as a link instead of iframe
     if (this.elements.demoPlaceholder) {
-      this.elements.demoPlaceholder.style.display = 'none';
+      this.elements.demoPlaceholder.innerHTML = `
+        <div style="padding: 32px; text-align: center;">
+          <p style="color: var(--color-lagoon); margin-bottom: 16px;">
+            <strong>🎥 Live Browser Stream Available</strong>
+          </p>
+          <a href="${url}" target="_blank" rel="noopener noreferrer"
+             style="display: inline-block; padding: 12px 24px; background: var(--color-orange);
+                    color: white; text-decoration: none; border-radius: 8px; font-weight: 500;">
+            Watch Live in New Tab →
+          </a>
+        </div>
+      `;
+      this.elements.demoPlaceholder.style.display = 'block';
     }
+    // Hide iframe entirely
     if (this.elements.demoFrame) {
-      this.elements.demoFrame.src = url;
-      this.elements.demoFrame.style.display = 'block';
+      this.elements.demoFrame.style.display = 'none';
     }
   },
 
