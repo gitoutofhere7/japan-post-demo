@@ -121,14 +121,28 @@ const DemoPlayer = {
   },
 
   loadBrowser(url) {
-    // Try to load TinyFish streaming URL in iframe
-    // This should work since it's a video stream, not the actual website
+    // DISABLED: Security concern - iframe was showing unexpected content
+    // Show link instead
     if (this.elements.demoPlaceholder) {
-      this.elements.demoPlaceholder.style.display = 'none';
+      this.elements.demoPlaceholder.innerHTML = `
+        <div style="padding: 32px; text-align: center;">
+          <p style="color: var(--color-lagoon); margin-bottom: 16px;">
+            <strong>🎥 Live Browser Stream</strong>
+          </p>
+          <a href="${url}" target="_blank" rel="noopener noreferrer"
+             style="display: inline-block; padding: 12px 24px; background: var(--color-orange);
+                    color: white; text-decoration: none; border-radius: 8px; font-weight: 500;">
+            Watch Live in New Tab →
+          </a>
+          <p style="margin-top: 16px; font-size: 12px; color: #666;">
+            URL: <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-size: 11px;">${url}</code>
+          </p>
+        </div>
+      `;
+      this.elements.demoPlaceholder.style.display = 'block';
     }
     if (this.elements.demoFrame) {
-      this.elements.demoFrame.src = url;
-      this.elements.demoFrame.style.display = 'block';
+      this.elements.demoFrame.style.display = 'none';
     }
   },
 
