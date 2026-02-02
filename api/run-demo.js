@@ -164,6 +164,7 @@ Note: This is a demonstration with dummy data. All information is randomly gener
       const decoder = new TextDecoder();
       let buffer = '';
       let currentProgress = 30;
+      let stepCounter = 4; // Start from step 4 (steps 1-3 are initial setup)
 
       while (true) {
         const { done, value } = await reader.read();
@@ -206,7 +207,7 @@ Note: This is a demonstration with dummy data. All information is randomly gener
 
                 await sendEvent({
                   type: 'STEP',
-                  step: 4,
+                  step: stepCounter++,
                   description: event.purpose || 'Performing action...'
                 });
               }
@@ -220,7 +221,7 @@ Note: This is a demonstration with dummy data. All information is randomly gener
                 if (event.status === 'COMPLETED') {
                   await sendEvent({
                     type: 'STEP',
-                    step: 5,
+                    step: stepCounter,
                     description: 'Form filled successfully! (Not submitted)'
                   });
 
