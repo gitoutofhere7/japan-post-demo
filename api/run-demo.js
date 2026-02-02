@@ -183,15 +183,23 @@ Note: This is a demonstration with dummy data. All information is randomly gener
               console.log('TinyFish event:', event.type, event);
 
               // Forward relevant events to client
-              if (event.type === 'BROWSER_URL') {
+              if (event.type === 'STARTED') {
                 await sendEvent({
-                  type: 'BROWSER_URL',
-                  url: event.url
+                  type: 'STATUS',
+                  message: 'TinyFish agent started',
+                  runId: event.runId
                 });
               }
 
-              if (event.type === 'ACTION') {
-                currentProgress = Math.min(currentProgress + 10, 90);
+              if (event.type === 'STREAMING_URL') {
+                await sendEvent({
+                  type: 'BROWSER_URL',
+                  url: event.streamingUrl
+                });
+              }
+
+              if (event.type === 'PROGRESS') {
+                currentProgress = Math.min(currentProgress + 5, 95);
                 await sendEvent({
                   type: 'PROGRESS',
                   progress: currentProgress
@@ -200,30 +208,34 @@ Note: This is a demonstration with dummy data. All information is randomly gener
                 await sendEvent({
                   type: 'STEP',
                   step: 4,
-                  description: event.description || 'Performing action...'
+                  description: event.purpose || 'Performing action...'
                 });
               }
 
-              if (event.type === 'COMPLETE' && event.status === 'COMPLETED') {
+              if (event.type === 'COMPLETE') {
                 await sendEvent({
                   type: 'PROGRESS',
                   progress: 100
                 });
 
-                await sendEvent({
-                  type: 'STEP',
-                  step: 5,
-                  description: 'Form filled successfully! (Not submitted)'
-                });
+                if (event.status === 'COMPLETED') {
+                  await sendEvent({
+                    type: 'STEP',
+                    step: 5,
+                    description: 'Form filled successfully! (Not submitted)'
+                  });
 
-                await sendEvent({
-                  type: 'COMPLETE',
-                  result: event.resultJson
-                });
+                  await sendEvent({
+                    type: 'COMPLETE',
+                    result: event.resultJson
+                  });
+                } else if (event.status === 'FAILED') {
+                  throw new Error(event.error || 'Automation failed');
+                }
               }
 
               if (event.type === 'ERROR') {
-                throw new Error(event.message || 'Unknown error from TinyFish');
+                throw new Error(event.message || event.error || 'Unknown error from TinyFish');
               }
 
             } catch (parseError) {
