@@ -121,24 +121,32 @@ Note: This is a demonstration with dummy data. All information is randomly gener
       });
 
       // Make request to TinyFish API
-      const response = await fetch('https://mino.ai/v1/automation/run-sse', {
-        method: 'POST',
-        headers: {
-          'X-API-Key': TINYFISH_API_KEY,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          url: JAPAN_POST_URL,
-          goal: goal,
-          options: {
-            mode: 'stealth',
-            timeout: 90000,
-          }
-        }),
-      });
+      let response;
+      try {
+        response = await fetch('https://mino.ai/v1/automation/run-sse', {
+          method: 'POST',
+          headers: {
+            'X-API-Key': TINYFISH_API_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: JAPAN_POST_URL,
+            goal: goal,
+            options: {
+              mode: 'stealth',
+              timeout: 90000,
+            }
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`TinyFish API error: ${response.status} ${response.statusText}`);
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('TinyFish API error response:', errorText);
+          throw new Error(`TinyFish API error: ${response.status} ${response.statusText} - ${errorText}`);
+        }
+      } catch (fetchError) {
+        console.error('TinyFish API fetch error:', fetchError);
+        throw fetchError;
       }
 
       await sendEvent({
