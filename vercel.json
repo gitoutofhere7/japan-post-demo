@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "env": {
+    "TINYFISH_API_KEY": "@tinyfish-api-key"
+  },
+  "build": {
+    "env": {
+      "TINYFISH_API_KEY": "@tinyfish-api-key"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

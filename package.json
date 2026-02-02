@@ -1,0 +1,22 @@
+{
+  "name": "japan-post-demo",
+  "version": "1.0.0",
+  "description": "TinyFish × Japan Post — Real Agents, Real Forms",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "tinyfish",
+    "ai-agents",
+    "japan-post",
+    "form-filling",
+    "demo"
+  ],
+  "author": "TinyFish",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}

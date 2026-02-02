@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyFish × 日本郵便 — Real Agents, Real Forms</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐟</text></svg>">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="60" cy="50" rx="25" ry="20" fill="#FECB8B" stroke="#000" stroke-width="3"/>
+                        <circle cx="55" cy="45" r="4" fill="#000"/>
+                        <circle cx="57" cy="44" r="1.5" fill="#fff"/>
+                        <path d="M 30 50 Q 20 40, 15 45 Q 10 50, 15 55 Q 20 60, 30 50 Z" fill="#FF6700" stroke="#000" stroke-width="3"/>
+                        <path d="M 75 35 Q 85 30, 88 35 Q 90 40, 85 42 Q 80 44, 75 35 Z" fill="#FF6700" stroke="#000" stroke-width="2"/>
+                        <path d="M 75 65 Q 85 70, 88 65 Q 90 60, 85 58 Q 80 56, 75 65 Z" fill="#FF6700" stroke="#000" stroke-width="2"/>
+                        <circle cx="90" cy="50" r="3" fill="#000"/>
+                    </svg>
+                    <span>TinyFish</span>
+                </div>
+
+                <h1 class="display-1">
+                    日本のフォームを<br>
+                    <span class="gradient-text">自然言語で</span>
+                </h1>
+
+                <p class="subtitle">
+                    Japanese websites are structurally some of the most complex in the world.<br>
+                    Our agents actually handle them.
+                </p>
+
+                <div class="demo-badge">
+                    <span class="badge-live">● LIVE</span>
+                    <span>Japan Post Redelivery Form</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Player -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-player" id="demoPlayer">
+                <div class="demo-status">
+                    <div class="status-indicator">
+                        <div class="pulse"></div>
+                        <span id="statusText">Starting agent...</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="demo-iframe-container">
+                    <iframe id="demoFrame" sandbox="allow-same-origin allow-scripts" style="display:none;"></iframe>
+                    <div class="demo-placeholder" id="demoPlaceholder">
+                        <div class="fish-loader">
+                            <svg width="80" height="80" viewBox="0 0 100 100" class="swimming-fish">
+                                <ellipse cx="60" cy="50" rx="25" ry="20" fill="#FF6700"/>
+                                <circle cx="55" cy="45" r="4" fill="#000"/>
+                                <path d="M 30 50 Q 20 40, 15 45 Q 10 50, 15 55 Q 20 60, 30 50 Z" fill="#FECB8B"/>
+                            </svg>
+                        </div>
+                        <p>Loading Japan Post form...</p>
+                    </div>
+                </div>
+
+                <div class="demo-steps" id="demoSteps">
+                    <!-- Steps will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🎯 Natural Language</h3>
+                    <p>No selectors. No XPath. Just: "Fill the Japan Post redelivery form."</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚡ Fast</h3>
+                    <p>Form filled in seconds. Production-ready speed.</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔒 Safe</h3>
+                    <p>Demo mode. No actual submission. All dummy data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event CTA -->
+    <section class="event-section">
+        <div class="container">
+            <div class="event-card">
+                <div class="event-header">
+                    <span class="event-tag">LIVE EVENT</span>
+                    <h2>9 Techies × オークラ東京</h2>
+                    <p class="event-date">2月18日 (February 18, 2026)</p>
+                </div>
+
+                <div class="event-copy">
+                    <p>I haven't been back to Japan in over three years. My excuse? I didn't have anything worth showing you. That changes February 18.</p>
+
+                    <p>Nine people who actually ship things are getting in a room and doing live demos. TinyFish, Cartesia, Roboflow, Harness, Vercel, ClickHouse. Plus Digital Garage, Nakashima, and Route06 on the customer side — the ones who already proved it works.</p>
+
+                    <p class="japanese-text">日本のウェブサイトは世界で最も複雑です。私たちのエージェントはそれを理解します。</p>
+
+                    <p>No theory. No "AI changes everything" slides.</p>
+
+                    <p class="japanese-text">無料。席は限られています。</p>
+                </div>
+
+                <a href="https://events.geodesiccap.com/2026devlab/10698450?ref=TinyFish&reg_type_id=1065460" class="cta-button" target="_blank">
+                    Register Now →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Disclaimer -->
+    <section class="disclaimer">
+        <div class="container">
+            <p class="disclaimer-text">
+                <strong>Legal Notice:</strong> This is a demonstration using dummy data. No actual redelivery requests are submitted to Japan Post.
+                This demo shows TinyFish's ability to navigate and fill complex Japanese forms using natural language commands.
+                All data is randomly generated and not connected to real delivery tracking numbers.
+            </p>
+            <p class="disclaimer-text japanese-text">
+                <strong>免責事項:</strong> これはダミーデータを使用したデモンストレーションです。実際の再配達申込みは送信されません。
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built with <span class="fish-emoji">🐟</span> TinyFish</p>
+            <p class="footer-links">
+                <a href="https://mino.ai" target="_blank">mino.ai</a>
+                <a href="https://docs.mino.ai" target="_blank">Docs</a>
+                <a href="https://github.com/TinyFishAI" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="/scripts/demo.js"></script>
+</body>
+</html>
