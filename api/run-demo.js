@@ -96,16 +96,21 @@ export default async function handler(req) {
 
       // Build TinyFish goal prompt
       const goal = `
-Navigate to the Japan Post redelivery request form and fill it out with the following information:
+This is a DEMO for a live event. Your goal is to demonstrate form-filling capability, NOT to complete the form successfully.
 
-Tracking Number (追跡番号): ${trackingNumber}
-Name: ${randomName.family} ${randomName.given} (${randomName.familyRomaji} ${randomName.givenRomaji})
-Preferred Delivery Date: ${deliveryDate}
-Preferred Time Slot: ${timeSlot}
+1. Navigate to the Japan Post redelivery form
+2. Attempt to fill in these fields:
+   - Tracking Number: ${trackingNumber}
+   - Name: ${randomName.family} ${randomName.given}
+   - Delivery Date: ${deliveryDate}
+   - Time Slot: ${timeSlot}
 
-Fill in all required fields. Do NOT click the submit button - stop right before submission.
+3. If the tracking number is rejected, that's OK - just demonstrate the interaction
+4. Do NOT search the web for valid tracking numbers
+5. Do NOT try multiple approaches - just show the form interaction
+6. Stop after demonstrating form filling (whether successful or not)
 
-Note: This is a demonstration with dummy data. All information is randomly generated for testing purposes.
+This is for a conference demo at Hotel Okura Tokyo on February 18, 2026.
       `.trim();
 
       await sendEvent({
