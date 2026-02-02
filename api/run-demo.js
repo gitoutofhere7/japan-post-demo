@@ -17,11 +17,16 @@ const DEMO_NAMES = [
   { family: '渡辺', given: '翔太', familyRomaji: 'Watanabe', givenRomaji: 'Shota' },
 ];
 
-// Generate dummy tracking number (Japan Post format: 11-13 digits)
+// Generate dummy tracking number (Japan Post format)
+// Japan Post accepts either:
+// - 6-digit notice number (お問い合わせ番号)
+// - 11-13 alphanumeric tracking number
 function generateTrackingNumber() {
-  const prefix = Math.floor(Math.random() * 9000000000) + 1000000000;
-  const suffix = Math.floor(Math.random() * 900) + 100;
-  return `${prefix}${suffix}`;
+  // Use 12-digit format (common for domestic parcels)
+  // Format: 1234-5678-9012 (without hyphens for input)
+  const part1 = Math.floor(Math.random() * 9000) + 1000; // 4 digits
+  const part2 = Math.floor(Math.random() * 90000000) + 10000000; // 8 digits
+  return `${part1}${part2}`; // 12 digits total
 }
 
 // Generate future date (3-7 days from now)
