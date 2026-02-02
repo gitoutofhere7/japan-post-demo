@@ -152,21 +152,51 @@ const DemoPlayer = {
     this.updateProgress(100);
     this.addStep('Final', 'Form filled successfully (not submitted)');
 
-    // Show success message
+    // Show event CTA
     if (this.elements.demoPlaceholder) {
       this.elements.demoPlaceholder.innerHTML = `
-        <div style="padding: 48px; text-align: center;">
-          <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
-          <h3 style="color: var(--color-lagoon); margin-bottom: 8px;">Demo Complete!</h3>
-          <p style="color: var(--color-text);">Form filled successfully (not submitted)</p>
+        <div style="padding: 64px 48px; text-align: center; background: linear-gradient(135deg, #00343B 0%, #004854 100%);">
+          <div style="font-size: 72px; margin-bottom: 24px;">🎉</div>
+          <h2 style="color: #E7FF84; font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px;">
+            日本のフォーム、完璧に処理
+          </h2>
+          <p style="color: #FECB8B; font-size: 18px; margin-bottom: 32px; line-height: 1.6;">
+            Japanese websites are complex. Our agents handle them.<br>
+            See more live demos like this at our event.
+          </p>
+
+          <div style="background: rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; margin-bottom: 32px; backdrop-filter: blur(10px);">
+            <h3 style="color: white; font-size: 24px; font-weight: 600; margin-bottom: 8px;">
+              9 Techies × オークラ東京
+            </h3>
+            <p style="color: #FECB8B; font-size: 16px; margin-bottom: 0;">
+              February 18, 2026 • Hotel Okura Tokyo
+            </p>
+          </div>
+
+          <a href="https://events.geodesiccap.com/2026devlab/10698450?ref=TinyFish&reg_type_id=1065460"
+             target="_blank"
+             rel="noopener noreferrer"
+             style="display: inline-block; background: linear-gradient(135deg, #FF6700 0%, #FF8534 100%);
+                    color: white; padding: 18px 48px; border-radius: 12px; text-decoration: none;
+                    font-weight: 600; font-size: 18px; box-shadow: 0 8px 24px rgba(255, 103, 0, 0.4);
+                    transition: transform 0.2s, box-shadow 0.2s;"
+             onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 32px rgba(255, 103, 0, 0.5)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(255, 103, 0, 0.4)';">
+            Register for Free →
+          </a>
+
+          <p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-top: 24px;">
+            無料 • 席は限られています
+          </p>
         </div>
       `;
       this.elements.demoPlaceholder.style.display = 'block';
     }
 
     setTimeout(() => {
-      this.updateStatus('Refresh to run again');
-    }, 3000);
+      this.updateStatus('Demo ready • Refresh to run again');
+    }, 2000);
   },
 
   handleError(message) {
