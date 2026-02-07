@@ -127,7 +127,7 @@ This is for a conference demo at Hotel Okura Tokyo on February 18, 2026.
       // Make request to TinyFish API
       let response;
       try {
-        response = await fetch('https://mino.ai/v1/automation/run-sse', {
+        response = await fetch('https://agent.tinyfish.ai/v1/automation/run-sse', {
           method: 'POST',
           headers: {
             'X-API-Key': TINYFISH_API_KEY,
